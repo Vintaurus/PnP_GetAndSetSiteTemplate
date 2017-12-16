@@ -27,16 +27,14 @@ function Get-Page($fileName) {
 }
 
 #Save all web parts from page to locale
-function Get-WebParts($fileName)
-{
+function Get-WebParts($fileName){
     $web = Get-PnPWeb 
     $serverRelativePageUrl = $web.ServerRelativeUrl + "/" + $librarySitePages + "/" + $fileName
     #Get all web parts
     $webParts = Get-PnPWebPart -ServerRelativePageUrl $serverRelativePageUrl
     $count = 0
 
-    foreach($webPart in $webParts)
-    {
+    foreach($webPart in $webParts){
         $count++
         $xml = Get-PnPWebPartXml -ServerRelativePageUrl $serverRelativePageUrl -Identity $webPart.Id
         $newFileName = "webpart_" + $fileName + "_" + $count.ToString() + ".xml"
@@ -46,19 +44,16 @@ function Get-WebParts($fileName)
 }
 
 #Get all script files to locale which is used for web parts
-function Get-ScriptFiles
-{
+function Get-ScriptFiles{
     #get all files
     $query ="<View Scope='RecursiveAll'><Query><Where><Eq><FieldRef Name='FSObjType' /><Value Type='Integer'>0</Value></Eq></Where></Query><ViewFields><FieldRef Name='FileLeafRef' /><FieldRef Name='FileDirRef' /></ViewFields></View>"
     $listItems = Get-PnPListItem -List $librarySiteAssets -Query $query
     $libraryFolderPath = $librarySiteAssets + $scriptFolder
     $folderPath = $PSScriptRoot + "\" + $folderFiles
     
-    foreach($listItem in $listItems)
-    {
+    foreach($listItem in $listItems){
         #get all items in the folder 'Scripts'
-        if($listItem.FieldValues.FileDirRef -match $scriptFolder)
-        {
+        if($listItem.FieldValues.FileDirRef -match $scriptFolder){
             $scriptFile = $libraryFolderPath + "/" + $listItem.FieldValues.FileLeafRef
             #Save file to locale
             Get-PnPFile -Url $scriptFile -AsFile -Path $folder
@@ -71,8 +66,7 @@ function Get-ScriptFiles
 }
 
 #Clean all permissions in provisionig template
-function Clear-PermissionsInProvisioningTemplate
-{
+function Clear-PermissionsInProvisioningTemplate{
     $template = Load-PnPProvisioningTemplate -Path $rootsiteTemplateFileName
     $template.Security.AdditionalAdministrators.Clear()
     $template.Security.AdditionalMembers.Clear()
