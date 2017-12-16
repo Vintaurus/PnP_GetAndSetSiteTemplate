@@ -5,13 +5,9 @@ $librarySitePages = "SitePages"
 $librarySiteAssets = "SiteAssets"
 $scriptFolder = "/Scripts"
 $folderFiles ="Files"
-
-
-
 #endregion
 
 #region functions
-
 #Save page to locale and add data to provisioning template
 function Get-Page($fileName) {
     $pageFile = "/" + $librarySitePages + "/" + $fileName
