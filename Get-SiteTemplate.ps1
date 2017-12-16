@@ -1,1 +1,5 @@
-Connect-PnPOnline -Url"http://wingtipserver/sites/dmses" -CurrentCredentials
+[string]$siteUrl = "http://wingtipserver/sites/demo"
+
+Connect-PnPOnline -Url $siteUrl -CurrentCredentials
+
+#Coming soon!
