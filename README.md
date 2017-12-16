@@ -1,2 +1,2 @@
 # PnP_GetAndSetSiteTemplate
-Demo, how you can get or set the site templates with pages and web parts
+An example for getting and setting the provisioning template with pages and web parts. More information you will find in the blog (coming soon!)
