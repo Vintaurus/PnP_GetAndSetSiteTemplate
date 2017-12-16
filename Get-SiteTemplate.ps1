@@ -101,5 +101,3 @@ Get-ScriptFiles
 Clear-PermissionsInProvisioningTemplate
 Disconnect-PnPOnline
 #endregion
-
-
