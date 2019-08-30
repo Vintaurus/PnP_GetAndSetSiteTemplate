@@ -78,7 +78,7 @@ function Clear-PermissionsInProvisioningTemplate{
 
 #region call main functions
 Connect-PnPOnline -Url $siteUrl -CurrentCredentials
-Get-PnPProvisioningTemplate -Out $templateFileName -IncludeSearchConfiguration -IncludeNativePublishingFiles -PersistPublishingFiles -PersistBrandingFiles -ForceGet-Page -fileName $startPageFileName 
+Get-PnPProvisioningTemplate -Out $templateFileName -IncludeSearchConfiguration -IncludeNativePublishingFiles -PersistPublishingFiles -PersistBrandingFiles -Force 
 
 Get-Page -fileName $startPageFileName
 Get-WebParts -fileName $startPageFileName
